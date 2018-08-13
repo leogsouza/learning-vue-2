@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+  <title>Introduction Vue</title>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <h2>{{ title }}</h2>
+    <div class="input-group">
+      <input type="text" v-model="newItem" v-on:keyup.enter="addItem"
+        placeholder="add shopping list item" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" v-on:click="addItem">
+          Add!
+        </button>
+      </span>
+    </div>
+    <ul>
+      <li v-for="item in items" v-bind:class="{ 'removed': item.checked}">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" v-model="item.checked">{{ item.text }}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="index.js"></script>
+
+</html>
