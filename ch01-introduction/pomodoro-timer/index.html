@@ -13,13 +13,20 @@
   <div id="app" class="container">
     <h2>
       <span>Pomodoro</span>
-      <button @click="start()">
+      <button :disabled="state==='started'" @click="start()">
         <i class="fa fa-play"></i>
       </button>
+      <button :disabled="state!=='started'" @click="pause()">
+        <i class="fa fa-pause"></i>
+      </button>
+      <button :disabled="state!=='started' && state !== 'paused'" @click="stop()">
+        <i class="fa fa-stop"></i>
+      </button>
     </h2>
+    <h3>{{ title }}</h3>
     <div class="card card-body bg-light">
       <div class="pomodoro-timer">
-        <span>{{ minute }}</span>:<span>{{ second }}</span>
+        <span>{{ min }}</span>:<span>{{ sec }}</span>
       </div>
     </div>
   </div>
